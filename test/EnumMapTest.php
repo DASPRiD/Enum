@@ -35,7 +35,7 @@ final class EnumMapTest extends TestCase
     {
         $this->expectException(ExpectationException::class);
         $map = new EnumMap(WeekDay::class, 'string', true);
-        $map->expect(WeekDay::class, 'int', false);
+        $map->expect(WeekDay::class, 'string', false);
     }
 
     public function testSize() : void
@@ -75,6 +75,13 @@ final class EnumMapTest extends TestCase
         $this->assertSame('foo', $map->get(WeekDay::TUESDAY()));
         $this->assertSame(null, $map->get(WeekDay::WEDNESDAY()));
         $this->assertSame(null, $map->get(WeekDay::FRIDAY()));
+    }
+
+    public function testPutInvalidValue() : void
+    {
+        $this->expectException(IllegalArgumentException::class);
+        $map = new EnumMap(WeekDay::class, 'string', true);
+        $map->put(WeekDay::TUESDAY(), 1);
     }
 
     public function testRemove() : void
