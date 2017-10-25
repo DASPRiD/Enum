@@ -123,6 +123,9 @@ final class EnumMapTest extends TestCase
     {
         return [
             ['bool', null],
+            ['mixed', 'foo'],
+            ['mixed', 1],
+            ['mixed', new stdClass()],
             ['bool', true],
             ['boolean', false],
             ['int', 1],
