@@ -357,7 +357,7 @@ final class EnumMap implements Serializable, IteratorAggregate
                 return is_int($value);
 
             case 'float':
-            case 'dobule':
+            case 'double':
                 return is_float($value);
 
             case 'string':

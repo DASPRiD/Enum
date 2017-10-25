@@ -84,11 +84,67 @@ final class EnumMapTest extends TestCase
         $this->assertSame(null, $map->get(WeekDay::FRIDAY()));
     }
 
-    public function testPutInvalidValue() : void
+    public function testPutInvalidKey() : void
     {
         $this->expectException(IllegalArgumentException::class);
         $map = new EnumMap(WeekDay::class, 'string', true);
-        $map->put(WeekDay::TUESDAY(), 1);
+        $map->put(Planet::MARS(), 'foo');
+    }
+
+    public function invalidValues() : array
+    {
+        return [
+            ['bool', null, false],
+            ['bool', 0],
+            ['boolean', 0],
+            ['int', 2.4],
+            ['integer', 5.3],
+            ['float', 3],
+            ['double', 7],
+            ['string', 1],
+            ['object', 1],
+            ['array', 1],
+            [stdClass::class, 1],
+        ];
+    }
+
+    /**
+     * @dataProvider invalidValues
+     * @param mixed $value
+     */
+    public function testPutInvalidValue(string $valueType, $value, bool $allowNull = true) : void
+    {
+        $this->expectException(IllegalArgumentException::class);
+        $map = new EnumMap(WeekDay::class, $valueType, $allowNull);
+        $map->put(WeekDay::TUESDAY(), $value);
+    }
+
+    public function validValues() : array
+    {
+        return [
+            ['bool', null],
+            ['bool', true],
+            ['boolean', false],
+            ['int', 1],
+            ['integer', 4],
+            ['float', 2.5],
+            ['double', 6.4],
+            ['string', 'foo'],
+            ['object', new stdClass()],
+            ['array', ['foo']],
+            [stdClass::class, new stdClass()],
+        ];
+    }
+
+    /**
+     * @dataProvider validValues
+     * @param mixed $value
+     */
+    public function testPutValidValue(string $valueType, $value, bool $allowNull = true) : void
+    {
+        $map = new EnumMap(WeekDay::class, $valueType, $allowNull);
+        $map->put(WeekDay::TUESDAY(), $value);
+        $this->addToAssertionCount(1);
     }
 
     public function testRemove() : void
