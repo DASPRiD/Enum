@@ -38,6 +38,13 @@ final class EnumMapTest extends TestCase
         $map->expect(WeekDay::class, 'string', false);
     }
 
+    public function testExpectedTypes() : void
+    {
+        $map = new EnumMap(WeekDay::class, 'string', true);
+        $map->expect(WeekDay::class, 'string', true);
+        $this->addToAssertionCount(1);
+    }
+
     public function testSize() : void
     {
         $map = new EnumMap(WeekDay::class, 'string', true);
