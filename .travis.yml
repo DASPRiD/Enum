@@ -11,7 +11,7 @@ cache:
 matrix:
   fast_finish: true
   include:
-    - php: 7
+    - php: 7.1
       env:
         - EXECUTE_CS_CHECK=true
         - EXECUTE_TEST_COVERALLS=true
