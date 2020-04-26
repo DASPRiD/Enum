@@ -214,7 +214,7 @@ abstract class AbstractEnum
      *
      * @throws SerializeNotSupportedException
      */
-    final public function __sleep() : void
+    final public function __sleep() : array
     {
         throw new SerializeNotSupportedException();
     }
