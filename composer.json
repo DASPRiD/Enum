@@ -5,8 +5,9 @@
     "authors": [
         {
             "name": "Ben Scholzen 'DASPRiD'",
+            "email": "mail@dasprids.de",
             "homepage": "https://dasprids.de/",
-            "email": "mail@dasprids.de"
+            "role": "Developer"
         }
     ],
     "keywords": [
