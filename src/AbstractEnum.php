@@ -85,7 +85,7 @@ abstract class AbstractEnum
     /**
      * @return static
      */
-    final private static function createValue(string $name, int $ordinal, array $arguments) : self
+    private static function createValue(string $name, int $ordinal, array $arguments) : self
     {
         $instance = new static(...$arguments);
         $instance->name = $name;
@@ -125,7 +125,7 @@ abstract class AbstractEnum
         return self::$values[static::class];
     }
 
-    final private static function constants() : array
+    private static function constants() : array
     {
         if (isset(self::$constants[static::class])) {
             return self::$constants[static::class];
