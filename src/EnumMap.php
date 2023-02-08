@@ -88,6 +88,16 @@ final class EnumMap implements Serializable, IteratorAggregate
         $this->values = array_fill(0, count($this->keyUniverse), null);
     }
 
+    public function __serialize(): string
+    {
+        return $this->serialize();
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->unserialize(serialize($data));
+    }
+
     /**
      * Checks whether the map types match the supplied ones.
      *
