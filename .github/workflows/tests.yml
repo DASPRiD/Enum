@@ -38,4 +38,5 @@ jobs:
         run: vendor/bin/phpunit
 
       - name: Code Sniffer
-        run vendor/bin/phpcs
+        run: vendor/bin/phpcs
+
