@@ -37,3 +37,5 @@ jobs:
       - name: Execute tests
         run: vendor/bin/phpunit
 
+      - name: Code Sniffer
+        run vendor/bin/phpcs
