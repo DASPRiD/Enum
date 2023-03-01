@@ -90,22 +90,22 @@ final class EnumMap implements Serializable, IteratorAggregate
 
     public function __serialize(): array
     {
-      $values = [];
+        $values = [];
 
-      foreach ($this->values as $ordinal => $value) {
-          if (null === $value) {
-              continue;
-          }
+        foreach ($this->values as $ordinal => $value) {
+            if (null === $value) {
+                continue;
+            }
 
-          $values[$ordinal] = $this->unmaskNull($value);
-      }
+            $values[$ordinal] = $this->unmaskNull($value);
+        }
 
-      return [
-          'keyType' => $this->keyType,
-          'valueType' => $this->valueType,
-          'allowNullValues' => $this->allowNullValues,
-          'values' => $values,
-      ];
+        return [
+            'keyType' => $this->keyType,
+            'valueType' => $this->valueType,
+            'allowNullValues' => $this->allowNullValues,
+            'values' => $values,
+        ];
     }
 
     public function __unserialize(array $data): void
