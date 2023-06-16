@@ -2,3 +2,5 @@
 /.gitignore export-ignore
 /.github export-ignore
 /phpcs.xml export-ignore
+/test export-ignore
+/phpunit.xml.dist export-ignore
