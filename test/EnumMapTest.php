@@ -91,7 +91,7 @@ final class EnumMapTest extends TestCase
         $map->put(Planet::MARS(), 'foo');
     }
 
-    public function invalidValues() : array
+    public static function invalidValues() : array
     {
         return [
             ['bool', null, false],
@@ -119,7 +119,7 @@ final class EnumMapTest extends TestCase
         $map->put(WeekDay::TUESDAY(), $value);
     }
 
-    public function validValues() : array
+    public static function validValues() : array
     {
         return [
             ['bool', null],
