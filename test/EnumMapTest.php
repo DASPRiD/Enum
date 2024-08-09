@@ -91,7 +91,7 @@ final class EnumMapTest extends TestCase
         $map->put(Planet::MARS(), 'foo');
     }
 
-    public function invalidValues() : array
+    public static function invalidValues() : array
     {
         return [
             ['bool', null, false],
@@ -112,6 +112,7 @@ final class EnumMapTest extends TestCase
      * @dataProvider invalidValues
      * @param mixed $value
      */
+     #[\PHPUnit\Framework\Attributes\DataProvider('invalidValues')]
     public function testPutInvalidValue(string $valueType, $value, bool $allowNull = true) : void
     {
         $this->expectException(IllegalArgumentException::class);
@@ -119,7 +120,7 @@ final class EnumMapTest extends TestCase
         $map->put(WeekDay::TUESDAY(), $value);
     }
 
-    public function validValues() : array
+    public static function validValues() : array
     {
         return [
             ['bool', null],
@@ -143,6 +144,7 @@ final class EnumMapTest extends TestCase
      * @dataProvider validValues
      * @param mixed $value
      */
+     #[\PHPUnit\Framework\Attributes\DataProvider('validValues')]
     public function testPutValidValue(string $valueType, $value, bool $allowNull = true) : void
     {
         $map = new EnumMap(WeekDay::class, $valueType, $allowNull);
